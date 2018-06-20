@@ -1,0 +1,44 @@
+// -*- mode: javascript -*-
+{
+    "Name"      : "Parab-MinMax",
+    "ShortName" : "Parab-MinMax",
+
+    "Materials" : {
+        "Omega" : {
+            "markers" : "Omega",
+            "name"    : "Omega",
+            "rho"     : "1.",
+            "k"       : "1.",
+            "Cp"      : "1"
+        }
+    },
+
+    "BoundaryConditions" : {
+        "temperature" : {
+            "Dirichlet" : {
+                "Boundary"           : { "expr" : "0" }
+             
+            },
+            "VolumicForces" : {
+                "Q"                 : { "expr" : "1e6*(1-exp(-t)):t" }
+            }
+        }
+    },
+
+    "InitialConditions" : {
+        "temperature" : {
+            "" : {
+                "" : { "expr" : "0" }
+            }
+        }
+    },
+
+    "PostProcess" : {
+        "Exports" : {
+            "fields" : [
+                "temperature",
+                "pid"
+            ]
+        }
+    }
+}
